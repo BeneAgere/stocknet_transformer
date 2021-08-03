@@ -1,0 +1,35 @@
+name: stocknet
+channels:
+  - defaults
+dependencies:
+  - ca-certificates=2021.7.5=hecd8cb5_1
+  - certifi=2020.6.20=pyhd3eb1b0_3
+  - libcxx=10.0.0=1
+  - libffi=3.3=hb1e8313_2
+  - ncurses=6.2=h0a44026_1
+  - pip=19.3.1=py27_0
+  - python=2.7.18=h47d645e_1
+  - readline=8.1=h9ed2024_0
+  - setuptools=44.0.0=py27_0
+  - sqlite=3.36.0=hce871da_0
+  - tk=8.6.10=hb0a8c7a_0
+  - wheel=0.36.2=pyhd3eb1b0_0
+  - zlib=1.2.11=h1de35cc_3
+  - pip:
+    - backports-weakref==1.0.post1
+    - bleach==1.5.0
+    - enum34==1.1.10
+    - funcsigs==1.0.2
+    - futures==3.3.0
+    - html5lib==0.9999999
+    - markdown==3.1.1
+    - mock==3.0.5
+    - nltk==3.2.5
+    - numpy==1.16.6
+    - protobuf==3.17.3
+    - pyyaml==5.4.1
+    - scipy==1.0.0
+    - six==1.16.0
+    - tensorflow==1.15.0
+    - werkzeug==1.0.1
+prefix: /Users/albada/anaconda3/envs/stocknet
