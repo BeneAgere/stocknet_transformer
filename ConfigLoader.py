@@ -12,7 +12,7 @@ import sys
 class PathParser:
 
     def __init__(self, config_path):
-        self.root = '../'
+        self.root = './'
         self.log = os.path.join(self.root, config_path['log'])
 
         self.data = os.path.join(self.root, config_path['data'])

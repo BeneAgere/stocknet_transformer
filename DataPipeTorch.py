@@ -39,12 +39,8 @@ class DataPipe:
         self.init_stock_with_word= config_model['init_stock_with_word']
         self.y_size = config_model['y_size']
 
-        self.bert_tokenizer = AutoTokenizer.from_pretrained("bert-base-uncased")
-        self.language_model = AutoModel.from_pretrained("bert-base-uncased")
         self.language_model_embed_dim = 768
-
-        #output_embedding_path = 'tweet_bert_embeddings.pickle'
-        output_embedding_path = 'tweet_bertweet_mean_embeddings.pickle'
+        output_embedding_path = 'res/tweet_bertweet_mean_embeddings.pickle'
 
         with open(output_embedding_path, 'rb') as file:
             self.bert_embeddings = pickle.load(file)

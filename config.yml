@@ -70,7 +70,7 @@ stocks:
   tech: ['GOOG', 'MSFT', 'FB', 'T', 'CHL', 'ORCL', 'TSM', 'VZ', 'INTC', 'CSCO']
 
 paths:
-  data: 'data/'
+  data: 'stocknet-dataset/'
   tweet_retrieved: 'tweet/raw'
   tweet_preprocessed: 'tweet/preprocessed'
   price: 'price/preprocessed'
