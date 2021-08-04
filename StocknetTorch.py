@@ -74,7 +74,7 @@ def train_model(data_generator, model_constructor=MLP, num_epochs=1, lr=1e-4, mo
         components.extend((str(key), str(val)))
 
     log_descripttion = '_'.join(components)
-    log_file_name = 'logs/' + log_descripttion + '.log'
+    log_file_name = 'log/pytorch/' + log_descripttion + '.log'
     print(log_descripttion)
     logging.basicConfig(filename=log_file_name, filemode='w', format='(%asctime)s %(message)s')
 
@@ -221,30 +221,6 @@ if __name__ == '__main__':
                     model_kwargs={'embed_dim': 256, 'num_heads': 1, 'n_transformer_layers': 1, 'output_seq_len': 5},
                     feature_group='both', traning_desc='AuxiliaryJointAttentionTransformer')
 
-
-    def objective(trial, data_generator):
-
-        model_kwargs = {'embed_dim': trial.suggest_int('embed_dim', 8, 4096),
-                        'num_heads': trial.suggest_int('num_heads', 1, 16),
-                        'n_transformer_layers': trial.suggest_int('n_transformer_layers', 1, 6),
-                        'learning_rate': trial.suggest_loguniform('learning_rate', 1e-6, 0.5),
-                        'weight_decay': trial.suggest_loguniform('weight_decay', 1e-6, 0.5),
-                        'dropout': trial.suggest_uniform('dropout', 0.0, 0.99),
-                        'output_seq_len': 5,
-                        }
-
-
-        train_model(data_generator, model_constructor=JointAttentionTransformer, num_epochs=3, model_kwargs=model_kwargs,
-                    feature_group='both', traning_desc='AuxiliaryJointAttentionTransformer')
-
-
-        data_generator, model_constructor = MLP, num_epochs = 1, lr = 1e-4, model_kwargs = {}, feature_group = 'prices', traning_desc = 'MLP'
-
-
-    study = optuna.create_study(direction='maximize')
-    study.optimize(objective, n_trials=100)
-    print(study.best_params)
-
     if run_sweep:
         for dropout in (0.0, 0.1, 0.2, 0.3, 0.4, 0.5):
             for dim in (128, 256, 512, 1024, 2048, 4096):
@@ -277,7 +253,7 @@ if __name__ == '__main__':
                                         feature_group='both', traning_desc='JointAttentionTransformer')
                         except:
                             print("Failed for Joint Attention Transformer with dim {}".format(dim))
-'''
+
                         try:
                             train_model(data_generator, model_constructor=TransformerClassifier, num_epochs=50, lr=1e-5,
                                     model_kwargs={'embed_dim': dim, 'num_heads': num_heads, 'dropout': dropout,
@@ -300,4 +276,3 @@ if __name__ == '__main__':
 
                 except:
                     print("Failed for AttentiveMLP with dim {}".format(dim))
-'''
