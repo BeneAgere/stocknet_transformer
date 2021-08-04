@@ -6,7 +6,6 @@ from DataPipeTorch import DataPipe
 import time
 from sklearn.metrics import matthews_corrcoef, accuracy_score, precision_score, recall_score, f1_score
 import logging
-import optuna
 
 
 def prepare_samples(batch, feature_group):
@@ -189,8 +188,8 @@ if __name__ == '__main__':
     train_transformer = False
     train_aux_transformer = False
     train_joint_attention_transformer = False
-    train_joint_attention_transformer_with_aux_targets = False
-    run_sweep = True
+    train_joint_attention_transformer_with_aux_targets = True
+    run_sweep = False
 
     if train_mlp:
        train_model(data_generator, model_constructor=MLP, num_epochs=3, lr=1e-5,
