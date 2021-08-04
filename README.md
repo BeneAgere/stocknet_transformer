@@ -4,17 +4,20 @@ Applying BERTweet and transformers to StockNet
 This repository contains the source code for running BERTweet with transformers for stock market prediction. It has two
 implementions: an adaptation of the original 
 
-# Steps to Run modified Stocknet with Transformer in Tensorflow:
-1) Clone repo
-2) Install conda environment from environment.yaml
-3) Download embeddings from https://zenodo.org/record/3237458/files/glove.twitter.27B.50d.txt.gz?download=1 and move them under /res
-4) Download dataset from https://github.com/yumoxu/stocknet-dataset and move under /data
-5) Run `python Main.py`
+# Required steps both both implementations
+1) Clone repo: `git clone https://github.com/ExcitateArde/stocknet_transformer.git`
+2) Clone the dataset: `git clone https://github.com/yumoxu/stocknet-dataset.git`
 
-# Steps to Run PyTorch implementation with BERTweet and transformers with cross-attention and auxiliary targets
-1) Clone repo
-2) Install conda environment from stocknet_torch_env.yaml
-3) Download dataset from https://github.com/yumoxu/stocknet-dataset and move under /data
+# Steps to run modified Stocknet with Transformer in Tensorflow:
+1) Install conda environment as `conda env create -f tensorflow_env.yml`
+2) Download and unzip GloVe word embeddings with:
+`curl https://zenodo.org/record/3237458/files/glove.twitter.27B.50d.txt.gz --output res/glove.twitter.27B.50d.txt.gz && gunzip res/glove.twitter.27B.50d.txt.gz`
+3) Run `python Main.py`
+
+# Steps to run PyTorch implementation with BERTweet and transformers with cross-attention and auxiliary targets
+1) Install conda environment as `conda env create -f pytorch_env.yml`
+2) Run `conda activate stocknet-torch`
+3) Run `unzip res/tweet_bertweet_mean_embeddings.pickle.zip`
 4) Run `python StocknetTorch.py`
 
 Notes: 
