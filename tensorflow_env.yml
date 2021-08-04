@@ -1,4 +1,4 @@
-name: stocknet
+name: stocknet-tensorflow
 channels:
   - defaults
 dependencies:
